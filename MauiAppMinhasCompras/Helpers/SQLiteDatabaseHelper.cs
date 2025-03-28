@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MauiAppMinhasCompras.Models;
 using SQLite;
+
 namespace MauiAppMinhasCompras.Helpers
 {
     public class SQLiteDatabaseHelper
@@ -36,7 +37,7 @@ namespace MauiAppMinhasCompras.Helpers
         }
         public Task<List<Produto>> Search(string q)
         {
-            string sql = "SELECT * Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
             return _conn.QueryAsync<Produto>(sql);
         }
     }
