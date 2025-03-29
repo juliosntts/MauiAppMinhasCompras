@@ -1,4 +1,5 @@
 ﻿using MauiAppMinhasCompras.Helpers;
+using System.Globalization;
 
 namespace MauiAppMinhasCompras
 {
@@ -10,7 +11,7 @@ namespace MauiAppMinhasCompras
         {
             get
             {
-                if (_db == null)
+                if(_db == null)
                 {
                     string path = Path.Combine(
                         Environment.GetFolderPath(
@@ -19,14 +20,18 @@ namespace MauiAppMinhasCompras
 
                     _db = new SQLiteDatabaseHelper(path);
                 }
+
                 return _db;
             }
         }
+
         public App()
         {
             InitializeComponent();
+
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+
             MainPage = new NavigationPage(new Views.ListaProduto());
         }
-
     }
 }

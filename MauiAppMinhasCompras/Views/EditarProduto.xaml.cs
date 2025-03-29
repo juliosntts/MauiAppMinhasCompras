@@ -13,7 +13,6 @@ public partial class EditarProduto : ContentPage
     {
         try
         {
-
             Produto produto_anexado = BindingContext as Produto;
 
             Produto p = new Produto
@@ -25,12 +24,12 @@ public partial class EditarProduto : ContentPage
             };
 
             await App.Db.Update(p);
-            await DisplayAlert("Sucesso!", "Registro Inserido", "OK");
-
+            await DisplayAlert("Sucesso!", "Registro Atualizado", "OK");
+            await Navigation.PopAsync();
         }
         catch (Exception ex)
         {
-            DisplayAlert("Ops", ex.Message, "OK");
+            await DisplayAlert("Ops", ex.Message, "OK");
         }
     }
 }
